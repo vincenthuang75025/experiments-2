@@ -12,6 +12,7 @@ const express = require("express");
 // import models so we can interact with the database
 const User = require("./models/user");
 const Goal = require("./models/goal");
+const Progress = require("./models/progress");
 
 // import authentication library
 const auth = require("./auth");
@@ -38,6 +39,18 @@ router.post("/addGoal", (req, res) => {
     googleid: req.body.googleid
   });
   goal.save().then((goal) => res.send(goal));
+})
+
+router.post("/getGoals", (req,res) => {
+  Goal.find({googleid: req.body.googleid}).then((goals) => res.send(goals));
+})
+
+router.post("/sendProgress", (req, res) => {
+  const prog = new Progress({
+    googleid: req.body.googleid,
+    progress: req.body.progress
+  });
+  prog.save().then((p) => res.send(p));
 })
 
 

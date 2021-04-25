@@ -3,6 +3,7 @@ import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import GoalInput from "./modules/GoalInput"
+import ProgressInput from "./modules/ProgressInput"
 
 import "../utilities.css";
 
@@ -55,6 +56,10 @@ class App extends Component {
           />
           <GoalInput
             path="/input"
+            userId={this.state.userId}
+          />
+          <ProgressInput
+            path="/progressinput"
             userId={this.state.userId}
           />
           <NotFound default />
