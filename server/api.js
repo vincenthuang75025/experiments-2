@@ -55,9 +55,7 @@ router.post("/sendProgress", (req, res) => {
 })
 
 router.post("/getProgress", (req,res) => {
-  Progress.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
-    console.log( post );
-  });
+  Progress.find({googleid: req.body.googleid}).sort({created_at: -1}).limit(10).then((p) => res.send(p));
 })
 
 // |------------------------------|

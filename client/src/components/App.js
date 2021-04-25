@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import GoalInput from "./modules/GoalInput"
 import ProgressInput from "./modules/ProgressInput"
 import NavBar from "./modules/NavBar.js";
+import Progress from "./modules/Progress";
 
 import "../utilities.css";
 
@@ -66,6 +67,10 @@ class App extends Component {
           />
           <ProgressInput
             path="/progressinput"
+            userId={this.state.userId}
+          />
+          <Progress
+            path="/progress"
             userId={this.state.userId}
           />
           <NotFound default />
