@@ -6,6 +6,7 @@ const ProgressSchema = new mongoose.Schema({
       type: Map,
       of: String
   },
+  comment: String,
 }, {timestamps: true});
 
 // compile model from schema

@@ -48,11 +48,17 @@ router.post("/getGoals", (req,res) => {
 router.post("/sendProgress", (req, res) => {
   const prog = new Progress({
     googleid: req.body.googleid,
-    progress: req.body.progress
+    progress: req.body.progress, 
+    comment: req.body.comment,
   });
   prog.save().then((p) => res.send(p));
 })
 
+router.post("/getProgress", (req,res) => {
+  Progress.findOne({}, {}, { sort: { 'created_at' : -1 } }, function(err, post) {
+    console.log( post );
+  });
+})
 
 // |------------------------------|
 // | write your API methods below!|

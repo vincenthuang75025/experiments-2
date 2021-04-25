@@ -23,7 +23,7 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        <Button>test</Button>
+        {/* <Button>test</Button>
         {this.props.userId ? (
           <GoogleLogout
             clientId={GOOGLE_CLIENT_ID}
@@ -38,7 +38,7 @@ class Skeleton extends Component {
             onSuccess={this.props.handleLogin}
             onFailure={(err) => console.log(err)}
           />
-        )}
+        )} */}
         <h1>Test</h1>
         <ul>
         </ul>

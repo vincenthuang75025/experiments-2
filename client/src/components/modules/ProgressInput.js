@@ -9,6 +9,7 @@ const ProgressInput = (props) => {
 
     const [goals, setGoals] = useState([]);
     const [vals, setVals] = useState({});
+    const [comment, setComment] = useState("");
 
 
     useEffect(() => {
@@ -38,9 +39,13 @@ const ProgressInput = (props) => {
         for (let i = 0; i < goals.length; i ++) {
             prog[goals[i].name] = vals[i];
         }
-        post("/api/sendProgress", {googleid: props.userId, progress: prog}).then((res) => {
+        post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment}).then((res) => {
             console.log(res);
         });
+    }
+
+    const handleCommentChange = (event) => {
+        setComment(event.target.value);
     }
 
 
@@ -54,7 +59,8 @@ const ProgressInput = (props) => {
                 </Select>
             </div>
         )}
-        <Button onClick={handleSubmit}>submit</Button>
+        <Input placeholder='Other Comments' value={comment} onChange={handleCommentChange}/>
+        <Button onClick={handleSubmit}>Submit</Button>
         </>
     )
 }
