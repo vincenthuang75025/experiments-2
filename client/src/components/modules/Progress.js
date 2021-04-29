@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "antd/dist/antd.css";
-import {Radio, Button} from "antd";
+import {Radio, Popover, Button} from "antd";
 import {post} from "../../utilities";
 
 const Progress = (props) => {
@@ -39,6 +39,13 @@ const Progress = (props) => {
         setActiveDay(i);
         setActiveGoal(j);
     };
+
+    const content = (i,j) => (
+        <div>
+          <p>Goal information: {goals[j].desc === '' ? 'None' : goals[j].desc}</p>
+          <p>Comments on day: {comments[i] === '' ? 'None' : comments[i]}</p>
+        </div>
+      );
 
     useEffect(() => {
         post("/api/getGoals", {googleid: props.userId}).then((res) => {
@@ -106,7 +113,9 @@ const Progress = (props) => {
                     <Button onClick={(e) => setActiveDay(i)}>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
-                        <Button style={{background: color[prog[i][j]+1]}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                        <Popover content={content(i,j)}>
+                            <Button style={{background: color[prog[i][j]+1]}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                        </Popover>
                     )}
                 </div>
             )
@@ -135,16 +144,15 @@ const Progress = (props) => {
                     <Button onClick={(e) => setActiveDay(i)}>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
-                        <Button style={{background: color2(i,j)}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                        <Popover content={content(i,j)}>
+                            <Button style={{background: color2(i,j)}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                        </Popover>
                     )}
                 </div> : <div/>
             )
             }
         </div>
         }
-        <div>Goal information: {activeGoal === -1 ? 'None' : (goals[activeGoal].desc === '' ? 'None' : goals[activeGoal].desc)}</div>
-        <div>Comments on day: {activeDay === -1 ? 'None' : (comments[activeDay] === '' ? 'None' : comments[activeDay])}</div>
-        
         </>
     )
 };
