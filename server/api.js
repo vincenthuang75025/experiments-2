@@ -8,6 +8,7 @@
 */
 
 const express = require("express");
+const crypto = require("crypto");
 
 // import models so we can interact with the database
 const User = require("./models/user");
