@@ -8,7 +8,6 @@ site title
 antd header
 
 convert components to func
-set error msg to red
 edit app and skeleton
 check for duplicate names
 

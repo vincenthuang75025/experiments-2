@@ -37,12 +37,12 @@ const GoalInput = (props) => {
 
     return (
         <>
-        <Form>
-            <Input placeholder="Goal name" value={name} onChange={handleNameChange}/>
-            <Input placeholder="Goal description" value={desc} onChange={handleDescChange}/>
+        <Form style={{width: '98%', margin: 'auto'}}>
+            <Input placeholder="Goal name" value={name} onChange={handleNameChange} style={{margin: '5px 0px'}}/>
+            <Input placeholder="Goal description" value={desc} onChange={handleDescChange} style={{margin: '5px 0px 10px 0px'}}/>
             <Button onClick={handleSubmit}>Submit</Button>
         </Form>
-        <div>{error}</div>
+        <div style={{color: 'red'}}>{error}</div>
         </>
     )
 }
