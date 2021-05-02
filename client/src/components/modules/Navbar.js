@@ -29,6 +29,9 @@ const NavBar = (props) => {
         <Link to="/progress" className="NavBar-link">
             See progress
         </Link>
+        <Link to={`/progress/${props.publicId}`} className="NavBar-link">
+            Public progress
+        </Link>
         </div>
         <div className="LoginButton">
           {props.userId ? (

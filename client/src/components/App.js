@@ -21,6 +21,7 @@ class App extends Component {
     super(props);
     this.state = {
       userId: undefined,
+      publicId: undefined,
     };
   }
 
@@ -29,6 +30,9 @@ class App extends Component {
       if (user._id) {
         // they are registed in the database, and currently logged in.
         this.setState({ userId: user._id });
+        get("/api/finduser", {id: user._id}).then((user2) => {
+          this.setState({publicId: user2.publicid});
+        })
       }
     });
   }
@@ -38,11 +42,15 @@ class App extends Component {
     const userToken = res.tokenObj.id_token;
     post("/api/login", { token: userToken }).then((user) => {
       this.setState({ userId: user._id });
+      get("/api/finduser", {id: user._id}).then((user2) => {
+        this.setState({publicId: user2.publicid});
+      })
     });
   };
 
   handleLogout = () => {
     this.setState({ userId: undefined });
+    this.setState({publicId: undefined});
     post("/api/logout");
   };
 
@@ -53,6 +61,7 @@ class App extends Component {
           handleLogin={this.handleLogin}
           handleLogout={this.handleLogout}
           userId={this.state.userId}
+          publicId={this.state.publicId}
           />
         <Router>
           <Skeleton
@@ -60,6 +69,7 @@ class App extends Component {
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}
+            publicId={this.state.publicId}
           />
           <GoalInput
             path="/input"
@@ -74,6 +84,10 @@ class App extends Component {
             userId={this.state.userId}
           />
           <NotFound default />
+          <Progress
+            path="/progress/:publicId"
+            userId={this.state.publicId}
+          />
         </Router>
       </>
     );

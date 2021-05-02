@@ -33,6 +33,23 @@ router.get("/whoami", (req, res) => {
   res.send(req.user);
 });
 
+router.get("/finduser", (req, res) => {
+  console.log('hiiiii');
+  console.log(req.query);
+  User.findById(req.query.id).then((user) => {
+    if (user.publicid) {
+      res.send(user);
+    }
+    else {
+      User.findByIdAndUpdate(req.query.id, {publicid: crypto.randomBytes(16).toString("hex")}).then((user2) => 
+        {
+          User.findById(req.query.id).then((user3) => res.send(user3));
+        }
+      );
+    }
+  })
+})
+
 router.post("/addGoal", (req, res) => {
   const goal = new Goal({
     name: req.body.name, 
