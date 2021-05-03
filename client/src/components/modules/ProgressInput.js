@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "antd/dist/antd.css";
-import {Input, Form, Button, Select} from "antd";
+import {Input, Button, Select, Popover} from "antd";
 import {post} from "../../utilities";
 
 const {Option} = Select;
@@ -10,6 +10,12 @@ const ProgressInput = (props) => {
     const [goals, setGoals] = useState([]);
     const [vals, setVals] = useState({});
     const [comment, setComment] = useState("");
+
+    const content = (i) => {
+        return (
+            <div>{goals[i].desc}</div>
+        )
+    }
 
 
     useEffect(() => {
@@ -58,16 +64,21 @@ const ProgressInput = (props) => {
 
     return (
         <>
-        {Object.keys(Array(goals.length).fill(0)).map((ind, i) => 
-            <div key={i}>
-                <Select style={{ width: 120 }} defaultValue='No' onChange={(e) => handleChange(e, i)}>
-                <Option key={(i, 1)} value={1}>Yes</Option>
-                <Option key={(i, 0)} value={0}>No</Option>
-                </Select>
-            </div>
-        )}
-        <Input placeholder='Other Comments' value={comment} onChange={handleCommentChange}/>
-        <Button onClick={handleSubmit}>Submit</Button>
+        <div style={{display: 'flex', 'flex-direction': 'column'}}>
+            {Object.keys(Array(goals.length).fill(0)).map((_, i) => 
+                <div key={i} style={{display: 'flex', 'flex-direction': 'row', margin: '2px 0px'}}>
+                    <Popover content={content(i)}>
+                        <Button style={{width: '75%'}}>{goals[i].name}</Button>
+                    </Popover>
+                    <Select style={{ width: '25%'}} defaultValue='No' onChange={(e) => handleChange(e, i)}>
+                    <Option key={(i, 1)} value={1}>Yes</Option>
+                    <Option key={(i, 0)} value={0}>No</Option>
+                    </Select>
+                </div>
+            )}
+        </div>
+        <Input placeholder='Other Comments' value={comment} onChange={handleCommentChange} style={{margin: '2px'}}/>
+        <Button onClick={handleSubmit} style={{margin: '2px', width: '100%'}}>Submit</Button>
         </>
     )
 }

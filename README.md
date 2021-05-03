@@ -10,8 +10,8 @@ antd header
 think abt skeleton and navbar design
 check for duplicate names
 
-create public and private per user
-think about security - give each user 2 ids? 
+custom text for pub screen
+go through every page and check
 logged out screens
 restrict to daily input?
 maybe redirect screen to progress after submission? at least clear values
@@ -26,3 +26,5 @@ clean up unused imports, state vars, etc
 shade radios
 empty pages / no data
 race issues w loading data and whatever
+
+test security

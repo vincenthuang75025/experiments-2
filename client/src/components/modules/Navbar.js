@@ -20,12 +20,12 @@ const NavBar = (props) => {
           Main
         </Link>
         <div className="NavBar-linkContainer u-inlineBlock">
-          <Link to="/input" className="NavBar-link">
-            Add goal
+          <Link to="/manage" className="NavBar-link">
+            Manage
           </Link>
-        <Link to="/progressinput" className="NavBar-link">
+        {/* <Link to="/progressinput" className="NavBar-link">
             Add progress
-        </Link>
+        </Link> */}
         <Link to="/progress" className="NavBar-link">
             See progress
         </Link>

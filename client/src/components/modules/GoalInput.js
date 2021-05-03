@@ -1,4 +1,4 @@
-import React, {useState, useEffect} from "react";
+import React, {useState} from "react";
 import "antd/dist/antd.css";
 import {Input, Form, Button} from "antd";
 import {post} from "../../utilities";
@@ -47,7 +47,7 @@ const GoalInput = (props) => {
         <Form style={{width: '98%', margin: 'auto'}}>
             <Input placeholder="Goal name" value={name} onChange={handleNameChange} style={{margin: '5px 0px'}}/>
             <Input placeholder="Goal description" value={desc} onChange={handleDescChange} style={{margin: '5px 0px 10px 0px'}}/>
-            <Button onClick={handleSubmit}>Submit</Button>
+            <Button onClick={handleSubmit} style={{width: '100%'}}>Submit</Button>
         </Form>
         <div style={{color: 'red'}}>{error}</div>
         </>

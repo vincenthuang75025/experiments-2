@@ -8,8 +8,6 @@ const Progress = (props) => {
     const [prog, setProg] = useState([]);
     const [goals, setGoals] = useState([]);
     const [comments, setComments] = useState([]);
-    const [activeDay, setActiveDay] = useState(-1);
-    const [activeGoal, setActiveGoal] = useState(-1);
     const [days, setDays] = useState(['temp']);
     const [pos, setPos] = useState('0');
 
@@ -33,11 +31,6 @@ const Progress = (props) => {
 
     const handlePosChange = ({ target: { value } }) => {
         setPos(value);
-    };
-
-    const handleProgClick = (i,j) => {
-        setActiveDay(i);
-        setActiveGoal(j);
     };
 
     const content = (i,j) => {
@@ -96,9 +89,9 @@ const Progress = (props) => {
 
     return (
         <>
-        <Radio.Group onChange={handlePosChange} value="top">
-        <Radio.Button value='0'>Progress</Radio.Button>
-        <Radio.Button value='1'>Averaged Progress</Radio.Button>
+        <Radio.Group onChange={handlePosChange} value="top"  style={{width: '80%', margin: '10px 10%'}}>
+        <Radio.Button value='0' style={{width: '50%', 'text-align': 'center'}}>Progress</Radio.Button>
+        <Radio.Button value='1' style={{width: '50%', 'text-align': 'center'}}>Averaged Progress</Radio.Button>
         </Radio.Group>
 
         { pos === '0' ? 
@@ -108,7 +101,7 @@ const Progress = (props) => {
             <Button/>
             {
                 Object.keys(goals).map((_, i) => 
-                <Button onClick={(e) => setActiveGoal(i)}>
+                <Button>
                     {goals[i].name}
                 </Button>)
             }
@@ -117,11 +110,11 @@ const Progress = (props) => {
             {
             Object.keys(prog).map((_, i) => 
                 <div style={{display: 'flex', 'flex-direction': 'column', width: '100px'}}>
-                    <Button onClick={(e) => setActiveDay(i)}>{dateFormat(days[i])}</Button>
+                    <Button>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>
-                            <Button style={{background: color[prog[i][j]+1]}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                            <Button style={{background: color[prog[i][j]+1]}}> </Button>
                         </Popover>
                     )}
                 </div>
@@ -138,7 +131,7 @@ const Progress = (props) => {
             <Button/>
             {
                 Object.keys(goals).map((_, i) => 
-                <Button onClick={(e) => setActiveGoal(i)}>
+                <Button>
                     {goals[i].name}
                 </Button>)
             }
@@ -148,11 +141,11 @@ const Progress = (props) => {
             Object.keys(prog).map((_, i) => 
             (i >= 2 && i < prog.length -2) ? 
                 <div style={{display: 'flex', 'flex-direction': 'column', width: '100px'}}>
-                    <Button onClick={(e) => setActiveDay(i)}>{dateFormat(days[i])}</Button>
+                    <Button>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>
-                            <Button style={{background: color2(i,j)}} onClick={(e) => handleProgClick(i,j)}> </Button>
+                            <Button style={{background: color2(i,j)}}> </Button>
                         </Popover>
                     )}
                 </div> : <div/>
