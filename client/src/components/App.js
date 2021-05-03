@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Router } from "@reach/router";
 import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
-import GoalInput from "./modules/GoalInput"
-import ProgressInput from "./modules/ProgressInput"
+import PrivateProgress from "./pages/PrivateProgress";
+import PublicProgress from "./pages/PublicProgress";
 import NavBar from "./modules/NavBar.js";
-import Progress from "./modules/Progress";
+// import Progress from "./modules/Progress";
 import Manage from "./pages/Manage";
 
 import "../utilities.css";
@@ -72,7 +72,7 @@ class App extends Component {
             userId={this.state.userId}
             publicId={this.state.publicId}
           />
-          <Progress
+          <PrivateProgress
             path="/progress"
             userId={this.state.userId}
           />
@@ -82,8 +82,9 @@ class App extends Component {
             publicId={this.state.publicId}
           />
           <NotFound default />
-          <Progress
+          <PublicProgress
             path="/progress/:userId"
+            id={this.state.userId}
           />
         </Router>
       </>

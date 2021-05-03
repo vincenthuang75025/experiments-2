@@ -48,6 +48,20 @@ router.get("/finduser", (req, res) => {
   })
 })
 
+router.get("/checkuser", (req,res) => {
+  User.find({publicid: req.query.publicid}).then((user) => {
+    if (!user.length) {
+      res.send({status: 'invalid'});
+    }
+    else if (user[0]._id.toString() === req.query.userId) {
+      res.send({name: user[0].name, status: 'true'});
+    }
+    else {
+      res.send({name: user[0].name, status: 'false'})
+    }
+  })
+})
+
 router.post("/addGoal", (req, res) => {
   if (req.body.googleid.length === 24) {
     const goal = new Goal({

@@ -22,4 +22,4 @@ empty pages / no data
 race issues w loading data and whatever
 
 test security
-more info for pub private views some text
+more popovers for days and goals

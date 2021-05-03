@@ -10,6 +10,7 @@ const ProgressInput = (props) => {
     const [goals, setGoals] = useState([]);
     const [vals, setVals] = useState({});
     const [comment, setComment] = useState("");
+    const [errorMsg, setErrorMsg] = useState("");
 
     const content = (i) => {
         return (
@@ -41,19 +42,27 @@ const ProgressInput = (props) => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        let prog = {};
-        for (let i = 0; i < goals.length; i ++) {
-            prog[goals[i].name] = vals[i];
-        }
-        if (props.userId.length === 24) {
-            post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment}).then((res) => {
-                console.log(res);
-            });
+        if (comment === "") {
+            setErrorMsg("Add a comment about today!");
         }
         else {
-            post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment, id: props.privateId}).then((res) => {
-                console.log(res);
-            });
+            setErrorMsg("");
+            let prog = {};
+            for (let i = 0; i < goals.length; i ++) {
+                prog[goals[i].name] = vals[i];
+            }
+            if (props.userId.length === 24) {
+                post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment}).then((res) => {
+                    console.log(res);
+                    setComment("");
+                });
+            }
+            else {
+                post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment, id: props.privateId}).then((res) => {
+                    console.log(res);
+                    setComment("");
+                });
+            }
         }
     }
 
@@ -79,6 +88,7 @@ const ProgressInput = (props) => {
         </div>
         <Input placeholder='Other Comments' value={comment} onChange={handleCommentChange} style={{margin: '2px'}}/>
         <Button onClick={handleSubmit} style={{margin: '2px', width: '100%'}}>Submit</Button>
+        <div style={{color: 'red'}}>{errorMsg}</div>
         </>
     )
 }
