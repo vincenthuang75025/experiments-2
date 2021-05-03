@@ -23,9 +23,16 @@ const GoalInput = (props) => {
             setError("Name and description can't be empty");
         }
         else {
-            post("/api/addGoal", {googleid: props.userId, name: name, desc: desc}).then((res) => {
-                console.log(res);
-            })
+            if (props.userId.length === 24) {
+                post("/api/addGoal", {googleid: props.userId, name: name, desc: desc}).then((res) => {
+                    console.log(res);
+                })
+            }
+            else {
+                post("/api/addGoal", {googleid: props.userId, id: props.privateId, name: name, desc: desc}).then((res) => {
+                    console.log(res);
+                })
+            }
 
             setName("");
             setDesc("");

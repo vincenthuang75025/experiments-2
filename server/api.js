@@ -49,12 +49,26 @@ router.get("/finduser", (req, res) => {
 })
 
 router.post("/addGoal", (req, res) => {
-  const goal = new Goal({
-    name: req.body.name, 
-    desc: req.body.desc, 
-    googleid: req.body.googleid
-  });
-  goal.save().then((goal) => res.send(goal));
+  if (req.body.googleid.length === 24) {
+    const goal = new Goal({
+      name: req.body.name, 
+      desc: req.body.desc, 
+      googleid: req.body.googleid
+    });
+    goal.save().then((goal) => res.send(goal));
+  }
+  else {
+    User.find({_id: req.body.id, publicid: req.body.googleid}).then((user) => {
+      if (user.length) {
+        const goal = new Goal({
+          name: req.body.name, 
+          desc: req.body.desc, 
+          googleid: req.body.googleid
+        });
+        goal.save().then((goal) => res.send(goal));
+      }
+    })
+  }
 })
 
 router.post("/getGoals", (req,res) => {
@@ -62,12 +76,26 @@ router.post("/getGoals", (req,res) => {
 })
 
 router.post("/sendProgress", (req, res) => {
-  const prog = new Progress({
-    googleid: req.body.googleid,
-    progress: req.body.progress, 
-    comment: req.body.comment,
-  });
-  prog.save().then((p) => res.send(p));
+  if (req.body.googleid.length === 24) {
+    const prog = new Progress({
+      googleid: req.body.googleid,
+      progress: req.body.progress, 
+      comment: req.body.comment,
+    });
+    prog.save().then((p) => res.send(p));
+  }
+  else {
+    User.find({_id: req.body.id, publicid: req.body.googleid}).then((user) => {
+      if (user.length) {
+        const prog = new Progress({
+          googleid: req.body.googleid,
+          progress: req.body.progress, 
+          comment: req.body.comment,
+        });
+        prog.save().then((p) => res.send(p));
+      }
+    })
+  }
 })
 
 router.post("/getProgress", (req,res) => {

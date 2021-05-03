@@ -38,7 +38,7 @@ const Manage = (props) => {
     </Radio.Group></div>
     
     {
-        (prog === '0') ? <ProgressInput userId={id}/>: <GoalInput userId={id}/>
+        (prog === '0') ? <ProgressInput userId={id} privateId={props.userId}/>: <GoalInput userId={id} privateId={props.userId}/>
     }
     </>
     )

@@ -39,9 +39,16 @@ const ProgressInput = (props) => {
         for (let i = 0; i < goals.length; i ++) {
             prog[goals[i].name] = vals[i];
         }
-        post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment}).then((res) => {
-            console.log(res);
-        });
+        if (props.userId.length === 24) {
+            post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment}).then((res) => {
+                console.log(res);
+            });
+        }
+        else {
+            post("/api/sendProgress", {googleid: props.userId, progress: prog, comment: comment, id: props.privateId}).then((res) => {
+                console.log(res);
+            });
+        }
     }
 
     const handleCommentChange = (event) => {
