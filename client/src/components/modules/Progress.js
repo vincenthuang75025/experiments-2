@@ -48,6 +48,7 @@ const Progress = (props) => {
     };
 
     useEffect(() => {
+        console.log(props.userId);
         post("/api/getGoals", {googleid: props.userId}).then((res) => {
             let N = res.length;
             let temp = [];

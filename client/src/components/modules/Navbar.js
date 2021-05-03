@@ -23,14 +23,11 @@ const NavBar = (props) => {
           <Link to="/manage" className="NavBar-link">
             Manage
           </Link>
-        {/* <Link to="/progressinput" className="NavBar-link">
-            Add progress
-        </Link> */}
         <Link to="/progress" className="NavBar-link">
-            See progress
+            Private Progress
         </Link>
         <Link to={`/progress/${props.publicId}`} className="NavBar-link">
-            Public progress
+            Public Progress
         </Link>
         </div>
         <div className="LoginButton">

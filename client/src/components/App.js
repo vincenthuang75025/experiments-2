@@ -91,8 +91,7 @@ class App extends Component {
           />
           <NotFound default />
           <Progress
-            path="/progress/:publicId"
-            userId={this.state.publicId}
+            path="/progress/:userId"
           />
         </Router>
       </>
