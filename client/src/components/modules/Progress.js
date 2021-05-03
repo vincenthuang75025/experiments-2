@@ -96,9 +96,9 @@ const Progress = (props) => {
         </Radio.Group>
 
         { pos === '0' ? 
-        <div style={{display: 'flex', 'flex-direction': 'row', width: '1400px', margin: '0% auto',  'overflow-x': 'auto'}}>
+        <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*prog.length)) + 'px', margin: '0% auto'}}>
             {
-            <div style={{display: 'flex', 'flex-direction': 'column'}}>
+            <div style={{display: 'flex', 'flex-direction': 'column', width: '200px'}}>
             <Button style={{'width': '200px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
@@ -108,6 +108,8 @@ const Progress = (props) => {
             }
             </div>
             }
+            <div style={{width: String(Math.min(1200, 80*prog.length)) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
+                <div style={{display: ' flex', 'flex-direction': 'row'}}>
             {
             Object.keys(prog).map((_, i) => 
                 <div style={{display: 'flex', 'flex-direction': 'column'}}>
@@ -121,15 +123,17 @@ const Progress = (props) => {
                 </div>
             )
             }
+                </div>
+            </div>
         </div>
 
 
             :
 
-        <div style={{display: 'flex', 'flex-direction': 'row', width: '1400px', margin: '0% auto',  'overflow-x': 'auto'}}>
+            <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*prog.length)) + 'px', margin: '0% auto'}}>
             {
-            <div style={{display: 'flex', 'flex-direction': 'column'}}>
-            <Button style={{'width': '20px'}}/>
+            <div style={{display: 'flex', 'flex-direction': 'column', width: '200px'}}>
+            <Button style={{'width': '200px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
                 <Button style={{'width': '200px'}}>
@@ -138,6 +142,8 @@ const Progress = (props) => {
             }
             </div>
             }
+            <div style={{width: String(Math.min(1200, 80*prog.length)) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
+            <div style={{display: ' flex', 'flex-direction': 'row'}}>
             {
             Object.keys(prog).map((_, i) => 
             (i >= 2 && i < prog.length -2) ? 
@@ -152,6 +158,8 @@ const Progress = (props) => {
                 </div> : <div/>
             )
             }
+                </div>
+            </div>
         </div>
         }
         </>
