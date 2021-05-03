@@ -96,13 +96,13 @@ const Progress = (props) => {
         </Radio.Group>
 
         { pos === '0' ? 
-        <div style={{display: 'flex', 'flex-direction': 'row'}}>
+        <div style={{display: 'flex', 'flex-direction': 'row', width: '1400px', margin: '0% auto',  'overflow-x': 'auto'}}>
             {
-            <div style={{display: 'flex', 'flex-direction': 'column', 'width': '100px'}}>
-            <Button/>
+            <div style={{display: 'flex', 'flex-direction': 'column'}}>
+            <Button style={{'width': '200px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
-                <Button>
+                <Button style={{width: '200px'}}>
                     {goals[i].name}
                 </Button>)
             }
@@ -110,12 +110,12 @@ const Progress = (props) => {
             }
             {
             Object.keys(prog).map((_, i) => 
-                <div style={{display: 'flex', 'flex-direction': 'column', width: '100px'}}>
-                    <Button>{dateFormat(days[i])}</Button>
+                <div style={{display: 'flex', 'flex-direction': 'column'}}>
+                    <Button style={{width: '80px'}}>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>
-                            <Button style={{background: color[prog[i][j]+1]}}> </Button>
+                            <Button style={{background: color[prog[i][j]+1], width: '80px'}}> </Button>
                         </Popover>
                     )}
                 </div>
@@ -126,13 +126,13 @@ const Progress = (props) => {
 
             :
 
-        <div style={{display: 'flex', 'flex-direction': 'row'}}>
+        <div style={{display: 'flex', 'flex-direction': 'row', width: '1400px', margin: '0% auto',  'overflow-x': 'auto'}}>
             {
-            <div style={{display: 'flex', 'flex-direction': 'column', 'width': '100px'}}>
-            <Button/>
+            <div style={{display: 'flex', 'flex-direction': 'column'}}>
+            <Button style={{'width': '20px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
-                <Button>
+                <Button style={{'width': '200px'}}>
                     {goals[i].name}
                 </Button>)
             }
@@ -141,12 +141,12 @@ const Progress = (props) => {
             {
             Object.keys(prog).map((_, i) => 
             (i >= 2 && i < prog.length -2) ? 
-                <div style={{display: 'flex', 'flex-direction': 'column', width: '100px'}}>
-                    <Button>{dateFormat(days[i])}</Button>
+                <div style={{display: 'flex', 'flex-direction': 'column'}}>
+                    <Button style={{width: '80px'}}>{dateFormat(days[i])}</Button>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>
-                            <Button style={{background: color2(i,j)}}> </Button>
+                            <Button style={{background: color2(i,j), width: '80px'}}> </Button>
                         </Popover>
                     )}
                 </div> : <div/>

@@ -22,7 +22,7 @@ const Manage = (props) => {
 
     return (
     <>
-    <div style={{width: '80%', margin: '0px 10%'}}>
+    <div style={{width: '60%', margin: '0px 20%'}}>
     <div>
     <Radio.Group onChange={handlePrivChange} defaultValue="0" style={{margin: '10px 0%', width: '100%'}}>
         <Radio.Button value='0' style={{width: '50%', 'text-align': 'center'}}>Private</Radio.Button>

@@ -72,14 +72,6 @@ class App extends Component {
             userId={this.state.userId}
             publicId={this.state.publicId}
           />
-          <GoalInput
-            path="/input"
-            userId={this.state.userId}
-          />
-          <ProgressInput
-            path="/progressinput"
-            userId={this.state.userId}
-          />
           <Progress
             path="/progress"
             userId={this.state.userId}
