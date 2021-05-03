@@ -6,6 +6,7 @@ import GoalInput from "./modules/GoalInput"
 import ProgressInput from "./modules/ProgressInput"
 import NavBar from "./modules/NavBar.js";
 import Progress from "./modules/Progress";
+import Manage from "./pages/Manage";
 
 import "../utilities.css";
 
@@ -82,6 +83,11 @@ class App extends Component {
           <Progress
             path="/progress"
             userId={this.state.userId}
+          />
+          <Manage
+            path="/manage"
+            userId={this.state.userId}
+            publicId={this.state.publicId}
           />
           <NotFound default />
           <Progress

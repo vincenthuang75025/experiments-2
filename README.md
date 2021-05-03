@@ -21,3 +21,8 @@ some way to deprecate goals
 make forms look nicer
 way to get wider time views / some sort of customizability
 better view for input goals (check all forms basically)
+
+clean up unused imports, state vars, etc
+shade radios
+empty pages / no data
+race issues w loading data and whatever

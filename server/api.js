@@ -34,8 +34,6 @@ router.get("/whoami", (req, res) => {
 });
 
 router.get("/finduser", (req, res) => {
-  console.log('hiiiii');
-  console.log(req.query);
   User.findById(req.query.id).then((user) => {
     if (user.publicid) {
       res.send(user);

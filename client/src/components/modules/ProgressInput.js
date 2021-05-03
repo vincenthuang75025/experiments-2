@@ -26,7 +26,7 @@ const ProgressInput = (props) => {
                 tempVals[i] = 0;
             }
             setVals(tempVals);
-        })
+        }).catch();
     }, [props.userId])
 
     const handleChange = (event, i) => {

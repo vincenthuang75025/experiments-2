@@ -40,12 +40,19 @@ const Progress = (props) => {
         setActiveGoal(j);
     };
 
-    const content = (i,j) => (
+    const content = (i,j) => {
+
+        if (j >= goals.length) {
+            return <div>Loading</div>
+        }
+
+        return (
         <div>
           <p>Goal information: {goals[j].desc === '' ? 'None' : goals[j].desc}</p>
           <p>Comments on day: {comments[i] === '' ? 'None' : comments[i]}</p>
         </div>
-      );
+        )
+    };
 
     useEffect(() => {
         post("/api/getGoals", {googleid: props.userId}).then((res) => {
