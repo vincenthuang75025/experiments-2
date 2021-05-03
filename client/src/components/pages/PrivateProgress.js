@@ -6,7 +6,7 @@ const PrivateProgress = (props) => {
     return (
         <>
         <Progress userId={props.userId}/>
-        <div>This is your private progress page. Progress recorded here are not accessible to other users. </div>
+        <div style={{'text-align': 'center'}}>This is your private progress page. Progress recorded here is not accessible to other users. </div>
         </>
     )
 }

@@ -47,6 +47,25 @@ const Progress = (props) => {
         )
     };
 
+    const goalContent = (i) => {
+        if (i >= goals.length) {
+            return <div>Loading</div>
+        }
+
+        return (
+            <div>Goal information: {goals[i].desc === '' ? 'None' : goals[i].desc}</div>
+        )
+    }
+
+    const dayContent = (i) => {
+        if (i >= comments.length) {
+            return <div>Loading</div>
+        }
+        return (
+            <div>Comments on day: {comments[i] === '' ? 'None' : comments[i]}</div>
+        )
+    }
+
     useEffect(() => {
         console.log(props.userId);
         post("/api/getGoals", {googleid: props.userId}).then((res) => {
@@ -102,9 +121,11 @@ const Progress = (props) => {
             <Button style={{'width': '200px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
+                <Popover content={goalContent(i)}>
                 <Button style={{width: '200px'}}>
                     {goals[i].name}
-                </Button>)
+                </Button>
+                </Popover>)
             }
             </div>
             }
@@ -113,7 +134,9 @@ const Progress = (props) => {
             {
             Object.keys(prog).map((_, i) => 
                 <div style={{display: 'flex', 'flex-direction': 'column'}}>
+                    <Popover content={dayContent(i)}>
                     <Button style={{width: '80px'}}>{dateFormat(days[i])}</Button>
+                    </Popover>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>
@@ -136,9 +159,11 @@ const Progress = (props) => {
             <Button style={{'width': '200px'}}/>
             {
                 Object.keys(goals).map((_, i) => 
+                <Popover content={goalContent(i)}>
                 <Button style={{'width': '200px'}}>
                     {goals[i].name}
-                </Button>)
+                </Button>
+                </Popover>)
             }
             </div>
             }
@@ -148,7 +173,9 @@ const Progress = (props) => {
             Object.keys(prog).map((_, i) => 
             (i >= 2 && i < prog.length -2) ? 
                 <div style={{display: 'flex', 'flex-direction': 'column'}}>
+                    <Popover content={dayContent(i)}>
                     <Button style={{width: '80px'}}>{dateFormat(days[i])}</Button>
+                    </Popover>
                     {
                     Object.keys(prog[i]).map((_, j) => 
                         <Popover content={content(i,j)}>

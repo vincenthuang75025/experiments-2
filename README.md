@@ -20,6 +20,6 @@ way to get wider time views / some sort of customizability
 
 empty pages / no data
 race issues w loading data and whatever
+not enough data for avg view
 
 test security
-more popovers for days and goals
