@@ -4,7 +4,7 @@ import NotFound from "./pages/NotFound.js";
 import Skeleton from "./pages/Skeleton.js";
 import PrivateProgress from "./pages/PrivateProgress";
 import PublicProgress from "./pages/PublicProgress";
-import NavBar from "./modules/NavBar.js";
+import NavBar from "./modules/Navbar.js";
 // import Progress from "./modules/Progress";
 import Manage from "./pages/Manage";
 
