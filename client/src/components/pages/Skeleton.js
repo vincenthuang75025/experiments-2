@@ -24,25 +24,13 @@ class Skeleton extends Component {
   render() {
     return (
       <>
-        {/* <Button>test</Button>
-        {this.props.userId ? (
-          <GoogleLogout
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Logout"
-            onLogoutSuccess={this.props.handleLogout}
-            onFailure={(err) => console.log(err)}
-          />
-        ) : (
-          <GoogleLogin
-            clientId={GOOGLE_CLIENT_ID}
-            buttonText="Login"
-            onSuccess={this.props.handleLogin}
-            onFailure={(err) => console.log(err)}
-          />
-        )} */}
-        <h1>Test</h1>
-        <ul>
-        </ul>
+        <div style={{margin: '0% 10%', height: '100%'}}>
+        <h1 style={{'text-align': 'center'}}>About</h1>
+        <div>This is a goal-tracking system. Define your own goals, log progress regularly, and get colorful displays of your progress over time! Progress can be private or shared with friends. </div>
+        <div>Insert demo pic when I have good data and examples.</div>
+        {this.props.userId ? <div/>: <div>Log in to get started.</div>}
+        <div style={{'margin': '20% 0% 0%'}}>Built by [], [], [] as part of Project School 2021</div>
+        </div>
       </>
     );
   }

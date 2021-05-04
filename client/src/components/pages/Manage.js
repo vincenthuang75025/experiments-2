@@ -21,6 +21,7 @@ const Manage = (props) => {
     }
 
     return (
+        props.userId ? 
     <>
     <div style={{width: '60%', margin: '0px 20%'}}>
     <div>
@@ -39,7 +40,8 @@ const Manage = (props) => {
         (prog === '0') ? <ProgressInput userId={id} privateId={props.userId}/>: <GoalInput userId={id} privateId={props.userId}/>
     }
     </div>
-    </>
+    <div style={{'text-align': 'center'}}>Manage your public and private goals!</div>
+    </> : <div style={{'text-align': 'center'}}>Log in to track your goals!</div>
     )
 
 }

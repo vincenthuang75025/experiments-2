@@ -1,15 +1,17 @@
 .NavBar-container {
     display: flex;
     flex-direction: row;
-    padding: var(--s) var(--m);
+    padding: 2px var(--s) 0px;
     /* background-color: rgb(247,252,208); */
     background-color: white;
     align-items: center;
+    color: var(--black);
+    font-size: 16px;
   }
   
   .NavBar-title {
     color: var(--black);
-    font-size: 20px;
+    font-size: 16px;
   }
   
   .NavBar-linkContainer {

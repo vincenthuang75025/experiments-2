@@ -70,7 +70,6 @@ class App extends Component {
             handleLogin={this.handleLogin}
             handleLogout={this.handleLogout}
             userId={this.state.userId}
-            publicId={this.state.publicId}
           />
           <PrivateProgress
             path="/progress"

@@ -16,10 +16,9 @@ const NavBar = (props) => {
     return (
     <>
       <nav className="NavBar-container">
-        <Link to="/" className="NavBar-title u-inlineBlock NavBar-Mainlink NavBar-link">
-          Main
-        </Link>
         <div className="NavBar-linkContainer u-inlineBlock">
+          {props.userId ? 
+          <>
           <Link to="/manage" className="NavBar-link">
             Manage
           </Link>
@@ -28,6 +27,9 @@ const NavBar = (props) => {
         </Link>
         <Link to={`/progress/${props.publicId}`} className="NavBar-link">
             Public Progress
+        </Link></> : <div/>}
+        <Link to="/" className="NavBar-title u-inlineBlock NavBar-Mainlink NavBar-link">
+          About
         </Link>
         </div>
         <div className="LoginButton">
@@ -50,6 +52,7 @@ const NavBar = (props) => {
           )}
         </div>
       </nav>
+      <hr/>
     </>
     );
 }
