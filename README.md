@@ -11,6 +11,8 @@ reset selection after inputting progress
 
 add print to each api call for debugging
 
+popover: remove some descriptive text
+
 empty pages / no data (no goals, no progress, insufficient progress for avg view; redesign avg view)
 
 low priority: 

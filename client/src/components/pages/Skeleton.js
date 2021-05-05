@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import GoogleLogin, { GoogleLogout } from "react-google-login";
 import "antd/dist/antd.css";
-import {Button} from "antd"
+import {Image} from "antd"
 
 import "../../utilities.css";
 import "./Skeleton.css";
@@ -27,7 +26,8 @@ class Skeleton extends Component {
         <div style={{margin: '0% 10%', height: '100%'}}>
         <h1 style={{'text-align': 'center'}}>About</h1>
         <div>This is a goal-tracking system. Define your own goals, log progress regularly, and get colorful displays of your progress over time! Progress can be private or shared with friends. </div>
-        <div>Insert demo pic when I have good data and examples.</div>
+        <Image src={require(`../../public/img/view1.png`)}/>
+        <Image src={require(`../../public/img/view2.png`)}/>
         {this.props.userId ? <div/>: <div>Log in to get started.</div>}
         <div style={{'margin': '20% 0% 0%'}}>Built by [], [], [] as part of Project School 2021</div>
         </div>
