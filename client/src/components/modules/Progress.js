@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import "antd/dist/antd.css";
-import {Radio, Popover, Button} from "antd";
+import {Radio, Popover, Button, Slider} from "antd";
 import {post} from "../../utilities";
 
 const Progress = (props) => {
@@ -10,11 +10,17 @@ const Progress = (props) => {
     const [comments, setComments] = useState([]);
     const [days, setDays] = useState(['temp']);
     const [pos, setPos] = useState('0');
+    const [slideValue, setSlideValue] = useState(5);
 
     const color = {0: 'rgb(240,80,107)', 1: 'rgb(247,252,208)', 2: 'rgb(159,229,182)'};
 
     const color2 = (i,j) => {
-        let blue = 5 + 25 * (5 - prog[i-2][j] - prog[i-1][j] - prog[i][j] - prog[i+1][j] - prog[i+2][j]);
+        // let blue = 5 + 25 * (5 - prog[i][j] - prog[i+1][j] - prog[i+2][j] - prog[i+3][j] - prog[i+4][j]);
+        let count = 0;
+        for (let ind = i; ind < i + slideValue; ind++) {
+            count = count - prog[ind][j];
+        }
+        let blue = Math.floor((255*(count+slideValue))/(2*slideValue));
         // return 'rgb(0,'.concat(blue.toString(), ',0)');
         return 'rgb(0,0,'.concat(blue.toString(), ')');
     }
@@ -152,8 +158,9 @@ const Progress = (props) => {
 
 
             :
-
-            <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*Math.max(prog.length-4,0))) + 'px', margin: '0% auto'}}>
+            <>
+            <Slider style={{width: '50%', margin: '5px auto'}} onChange={(e) => setSlideValue(e)} min={1} max={Math.min(20,prog.length)} value={slideValue}/>
+            <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*Math.max(prog.length-slideValue+1,0))) + 'px', margin: '0% auto'}}>
             {
             <div style={{display: 'flex', 'flex-direction': 'column', width: '200px'}}>
             <Button style={{'width': '200px'}}/>
@@ -167,11 +174,11 @@ const Progress = (props) => {
             }
             </div>
             }
-            <div style={{width: String(Math.min(1200, 80*Math.max(prog.length-4,0))) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
+            <div style={{width: String(Math.min(1200, 80*Math.max(prog.length-slideValue+1,0))) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
             <div style={{display: ' flex', 'flex-direction': 'row'}}>
             {
             Object.keys(prog).map((_, i) => 
-            (i >= 2 && i < prog.length -2) ? 
+            (i < prog.length -slideValue+1) ? 
                 <div style={{display: 'flex', 'flex-direction': 'column'}}>
                     <Popover content={dayContent(i)}>
                     <Button style={{width: '80px'}}>{dateFormat(days[i])}</Button>
@@ -188,7 +195,8 @@ const Progress = (props) => {
                 </div>
             </div>
         </div>
-        }
+        </>
+        } 
         </>
     )
 };
