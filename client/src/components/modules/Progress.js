@@ -153,7 +153,7 @@ const Progress = (props) => {
 
             :
 
-            <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*prog.length)) + 'px', margin: '0% auto'}}>
+            <div style={{display: 'flex', 'flex-direction': 'row', width: String(200 + Math.min(1200, 80*Math.max(prog.length-4,0))) + 'px', margin: '0% auto'}}>
             {
             <div style={{display: 'flex', 'flex-direction': 'column', width: '200px'}}>
             <Button style={{'width': '200px'}}/>
@@ -167,7 +167,7 @@ const Progress = (props) => {
             }
             </div>
             }
-            <div style={{width: String(Math.min(1200, 80*prog.length)) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
+            <div style={{width: String(Math.min(1200, 80*Math.max(prog.length-4,0))) + 'px', 'overflow-x': 'auto', display: 'flex', 'flex-direction': 'row-reverse'}}>
             <div style={{display: ' flex', 'flex-direction': 'row'}}>
             {
             Object.keys(prog).map((_, i) => 
