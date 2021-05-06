@@ -26,10 +26,10 @@ class Skeleton extends Component {
         <div style={{margin: '0% 10%', height: '100%'}}>
         <h1 style={{'text-align': 'center'}}>About</h1>
         <div>This is a goal-tracking system. Define your own goals, log progress regularly, and get colorful displays of your progress over time! Progress can be private or shared with friends. </div>
+        {this.props.userId ? <div/>: <div style={{'text-align': 'center', 'font-weight': 'bold'}}>Log in to get started &#x1F60a;</div>}
         <Image src={require(`../../public/img/view1.png`)}/>
         <Image src={require(`../../public/img/view2.png`)}/>
-        {this.props.userId ? <div/>: <div>Log in to get started.</div>}
-        <div style={{'margin': '20% 0% 0%'}}>Built by [], [], [] as part of Project School 2021</div>
+        <div style={{'margin': '20% 0% 0%'}}>Built by Vincent Huang, Jerry Ye, Jonathan Xu as part of Project School 2021</div>
         </div>
       </>
     );

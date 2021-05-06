@@ -27,8 +27,8 @@ const PublicProgress = (props) => {
         {props.userId.length === 32 && valid ? 
         <>
         <Progress userId={props.userId}/>
-        {same === 'true' ? <div style={{'text-align': 'center'}}>This is your public progress page. Send the link to your friends!</div> : 
-        <div style={{'text-align': 'center'}}>This is the public progress page of {name}</div>}
+        {same === 'true' ? <div style={{'text-align': 'center', 'margin': '20% 0% 0%'}}>This is your public progress page. Send the link to your friends!</div> : 
+        <div style={{'text-align': 'center', 'margin': '20% 0% 0%'}}>This is the public progress page of {name}</div>}
         </> : 
         <div style={{'text-align': 'center'}}>Ask friends to get links to their public progress pages, or log in to view your own public progress page!</div>
         }

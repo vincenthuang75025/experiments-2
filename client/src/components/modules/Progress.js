@@ -114,6 +114,7 @@ const Progress = (props) => {
 
 
     return (
+        prog.length === 0 ? <div style={{'text-align': 'center'}}>Add some progress to see it here</div>: 
         <>
         <Radio.Group onChange={handlePosChange} value="top"  style={{width: '80%', margin: '10px 10%'}}>
         <Radio.Button value='0' style={{width: '50%', 'text-align': 'center'}}>Progress</Radio.Button>

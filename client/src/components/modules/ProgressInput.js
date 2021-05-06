@@ -72,6 +72,7 @@ const ProgressInput = (props) => {
 
 
     return (
+        goals.length === 0 ? <div style={{'text-align': 'center'}}>First add a goal by clicking on 'Add Goal', and then record progress for your goals here</div>: 
         <>
         <div style={{display: 'flex', 'flex-direction': 'column'}}>
             {Object.keys(Array(goals.length).fill(0)).map((_, i) => 
