@@ -5,6 +5,7 @@ import Skeleton from "./pages/Skeleton.js";
 import PrivateProgress from "./pages/PrivateProgress";
 import PublicProgress from "./pages/PublicProgress";
 import NavBar from "./modules/Navbar.js";
+import Writeup from "./pages/Writeup";
 // import Progress from "./modules/Progress";
 import Manage from "./pages/Manage";
 
@@ -84,6 +85,9 @@ class App extends Component {
           <PublicProgress
             path="/progress/:userId"
             id={this.state.userId}
+          />
+          <Writeup 
+           path="/writeup"
           />
         </Router>
       </>

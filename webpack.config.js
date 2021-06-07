@@ -49,6 +49,14 @@ module.exports = {
         ],
       },
       {
+        test: /\.(pdf)$/,
+        use: [
+          {
+            loader: "file-loader",
+          },
+        ],
+      },
+      {
         test: /\.(png|svg|jpg|gif)$/,
         use: [
           {
