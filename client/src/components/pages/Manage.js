@@ -3,6 +3,7 @@ import "antd/dist/antd.css";
 import {Radio} from "antd";
 import ProgressInput from "../modules/ProgressInput"
 import GoalInput from "../modules/GoalInput"
+import RemoveGoal from "../modules/RemoveGoal"
 
 const Manage = (props) => {
     const [prog, setProg] = useState('0');
@@ -32,12 +33,16 @@ const Manage = (props) => {
 
     <div>
     <Radio.Group onChange={handleProgChange} defaultValue="0" style={{margin: '0px 0% 10px', width: '100%'}}>
-        <Radio.Button value='0' style={{width: '50%', 'text-align': 'center'}}>Add Progress</Radio.Button>
-        <Radio.Button value='1' style={{width: '50%', 'text-align': 'center'}}>Add Goal</Radio.Button>
+        <Radio.Button value='0' style={{width: '34%', 'text-align': 'center'}}>Add Progress</Radio.Button>
+        <Radio.Button value='1' style={{width: '33%', 'text-align': 'center'}}>Add Goal</Radio.Button>
+        <Radio.Button value='2' style={{width: '33%', 'text-align': 'center'}}>Remove Goal</Radio.Button>
     </Radio.Group></div>
     
     {
-        (prog === '0') ? <ProgressInput userId={id} privateId={props.userId}/>: <GoalInput userId={id} privateId={props.userId}/>
+        (prog === '0') ? <ProgressInput userId={id} privateId={props.userId}/>: (
+        (prog === '1') ? 
+        <GoalInput userId={id} privateId={props.userId}/> : 
+        <RemoveGoal userId={id} privateId={props.userId}/>)
     }
     </div>
     <div style={{'text-align': 'center', 'margin': '20% 0% 0%'}}>Manage your public and private goals!</div>

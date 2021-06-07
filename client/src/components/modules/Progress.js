@@ -102,7 +102,9 @@ const Progress = (props) => {
             for (let i = 0; i < N; i++) {
                 let temp = Array(goals.length).fill(0);
                 Object.keys(res[i].progress).map((goal, _) => {
-                    temp[map[goal]] = 2*Number(res[i].progress[goal])-1;
+                    if (map[goal]) {
+                        temp[map[goal]] = 2*Number(res[i].progress[goal])-1;
+                    }
                 })
                 progress = [[...temp], ...progress];
                 day = [res[i].createdAt, ...day];

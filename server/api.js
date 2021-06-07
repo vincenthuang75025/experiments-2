@@ -85,6 +85,21 @@ router.post("/addGoal", (req, res) => {
   }
 })
 
+router.post("/deleteGoal", (req, res) => {
+  if (req.body.googleid.length === 24) {
+    Goal.deleteOne({googleid: req.body.googleid, name: req.body.name}).then(
+      (res1, _) => res.send(res1));
+  }
+  else {
+    User.find({_id: req.body.id, publicid: req.body.googleid}).then((user) => {
+      if (user.length) {
+        Goal.deleteOne({googleid: req.body.googleid, name: req.body.name}).then(
+          (res1, _) => res.send(res1));
+      }
+    })
+  }
+})
+
 router.post("/getGoals", (req,res) => {
   Goal.find({googleid: req.body.googleid}).then((goals) => res.send(goals));
 })
